@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 const ToDoModel = require("./Models/ToDo");
 require("dotenv").config();
 const uri = process.env.CONN_URI;
@@ -64,6 +64,6 @@ app.post("/add", (req, res) => {
 });
 
 //Server
-app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on ${port}`);
 });
