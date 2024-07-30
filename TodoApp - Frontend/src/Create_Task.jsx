@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
+const baseUrl = import.meta.env.VITE_SERVER_URL
 function Create_Task({addTask}) {
     const [task , setTask] = useState("")
     const handleTask = (e) => {
       e.preventDefault();
-        axios.post('http://localhost:3000/add',{task : task})
+      if(task){
+        axios.post(`${baseUrl}/add`,{task : task})
         .then(result => {
           addTask(result.data);
           setTask("");
-        })
-        .catch(error => console.log(error)) 
+        }).catch(error => console.log(error)) 
+      }else{
+        alert("Enter a Task...!!!")
+      }
     }
   return (
     <div className='create_form'>
